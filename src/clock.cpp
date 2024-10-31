@@ -99,7 +99,7 @@ void Clock::toString(char* buffer) const
     buffer[i++] = '0' + (h % 10);
     buffer[i++] = ':';
 
-    if (h < 10)
+    if (m < 10)
         buffer[i++] = '0';
     else
         buffer[i++] = '0' + (m / 10);
