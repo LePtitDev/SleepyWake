@@ -126,29 +126,29 @@ uint32_t Clock::toTime(int hour, int minute, int second)
 DateTime Clock::getSummerTimeChangeDate(int year)
 {
     // UE complient: last sunday of march
-    DateTime lastDayOfMarch = DateTime(year, 2, 31, 12, 0, 0);
+    DateTime lastDayOfMarch = DateTime(year, 3, 31, 12, 0, 0);
     int dayOfTheWeek = lastDayOfMarch.dayOfTheWeek();
-    return DateTime(year, 2, 31 - dayOfTheWeek, 2, 0, 0);
+    return DateTime(year, 3, 31 - dayOfTheWeek, 2, 0, 0);
 }
 
 DateTime Clock::getWinterTimeChangeDate(int year)
 {
     // UE complient: last sunday of october
-    DateTime lastDayOfOctober = DateTime(year, 9, 31, 12, 0, 0);
+    DateTime lastDayOfOctober = DateTime(year, 10, 31, 12, 0, 0);
     int dayOfTheWeek = lastDayOfOctober.dayOfTheWeek();
-    return DateTime(year, 9, 31 - dayOfTheWeek, 2, 0, 0);
+    return DateTime(year, 10, 31 - dayOfTheWeek, 2, 0, 0);
 }
 
 bool Clock::isWinterTime(const DateTime& date)
 {
     int month = date.month();
-    if (month < 2 || month > 9)
+    if (month < 3 || month > 10)
         return true;
 
-    if (month > 2 || month < 9)
+    if (month > 3 || month < 10)
         return false;
 
-    if (month == 2)
+    if (month == 3)
         return date < Clock::getSummerTimeChangeDate(date.year());
     else
         return date > Clock::getWinterTimeChangeDate(date.year());
