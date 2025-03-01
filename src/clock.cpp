@@ -145,7 +145,7 @@ bool Clock::isWinterTime(const DateTime& date)
     if (month < 3 || month > 10)
         return true;
 
-    if (month > 3 || month < 10)
+    if (month > 3 && month < 10)
         return false;
 
     if (month == 3)
